@@ -17,7 +17,9 @@ action :create do
     owner    'root'
     group    'root'
     mode     00644
-    cookbook 'wordpress-nginx'
+    if node['wordpress-nginx']['cookbook']
+      cookbook node['wordpress-nginx']['cookbook']
+    end
     variables(
       :name => new_resource.name,
       :host => new_resource.host,
