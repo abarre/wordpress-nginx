@@ -17,8 +17,8 @@ action :create do
     owner    'root'
     group    'root'
     mode     00644
-    if node['wordpress-nginx']['cookbook']
-      cookbook node['wordpress-nginx']['cookbook']
+    if node['wordpress_nginx']['cookbook']
+      cookbook node['wordpress_nginx']['cookbook']
     end
     variables(
       :name => new_resource.name,
