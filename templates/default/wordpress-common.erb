@@ -57,6 +57,9 @@ location ~ \.php$ {
   # but was missing in the default fastcgi_params on upgrade to nginx 1.4.
   # We define it here to be sure that it exists.
   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  <% if node['wordpress_nginx']['fastcgi_params'] %>
+    <%= node['wordpress_nginx']['fastcgi_params'] %>
+  <% end %>
 
   # Use the upstream for php5-fpm that we defined in nginx.conf
   fastcgi_pass unix:<%= node['wordpress_nginx']['php_fpm']['listen'] %>;
